@@ -82,3 +82,12 @@ exports.getAbout = (req,res)=>{
     }
     res.render('about',{locals});
 }
+
+exports.getContact = (req,res )=>{
+    const locals={
+        title:"Contact",
+        description:"A blog Website using Node.js, Express and MongoDB."
+    }
+
+    res.render('contact',{locals})
+}
