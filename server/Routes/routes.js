@@ -1,7 +1,6 @@
 const express = require('express');
 const { homeRoute, getPosts, searchPosts, getAbout,getContact } = require('../../controller/controller');
 const router = express.Router();
-const Post=require('../model/Schema');
 
 
 //Home Route
