@@ -1,5 +1,5 @@
 const Post=require('../server/model/Schema');
-
+const User = require('../server/model/User')
 exports.homeRoute=async (req,res)=>{
     try{
         const locals={
@@ -14,7 +14,7 @@ exports.homeRoute=async (req,res)=>{
         .limit(perPage)
         .exec();
 
-
+        const user = req.user; 
         const count = await Post.count();
         const nextPage = parseInt(page)+1;
         const hasNextPage = nextPage <=Math.ceil(count/perPage);
@@ -23,6 +23,7 @@ exports.homeRoute=async (req,res)=>{
             locals,
             data,
             current:page,
+            user,
             nextPage:hasNextPage?nextPage:null
         });
 
@@ -36,12 +37,13 @@ exports.homeRoute=async (req,res)=>{
 
 exports.getPosts = async (req,res)=>{
     try{
+        user=req.user;
         let slug=req.params.id;
         const data=await Post.findById({_id:slug})
         const locals={
             title:data.title,
         }
-        res.render('post',{locals,data})
+        res.render('post',{user,locals,data})
     }
     catch(err){
         console.log(err);

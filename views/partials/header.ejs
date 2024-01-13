@@ -1,4 +1,5 @@
 <header class="header">
+
   <a href="/" class="header__logo">NodeJs</a>
 
   <nav class="header__nav">
@@ -12,6 +13,9 @@
       <li>
         <a href="/contact" class="Contact">Contact</a>
       </li>
+      <li>
+        <a href="/dashboard" class="Contact">Dashboard</a>
+      </li>
     </ul>
 
   </nav>
@@ -24,6 +28,17 @@
         <path d="M14.875 14.875L11.7938 11.7938" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
+    <% if (!user) { %>
+      <a class="google-btn" href="/auth/google">Google+</a>
+    <% } %>
+
+    <% if (user) { %>
+      <a href="/logout" >
+        Log Out
+      </a>
+    <% } %>
+    
+
   </div>
 
-</header>
+</header> 
