@@ -37,7 +37,7 @@ app.use(express.json());
 app.use('/',require('./server/Routes/routes'));
 app.use('/',require('./server/Routes/admin'));
 
-app.listen(5000,()=>{
+app.listen(5001,()=>{
     console.log(`server running at http://localhost:${PORT}`)
 })
 
